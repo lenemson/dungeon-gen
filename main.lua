@@ -7,7 +7,7 @@ require "src/Container"
 -- Load
 function love.load()
 	rooms = Container.new( 0, 0, 800, 600 )
-	iter = 3
+	iter = 7
 	tree = bsp( rooms, iter )
 	tree:ToString( 1 )
 end
