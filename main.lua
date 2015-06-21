@@ -2,14 +2,16 @@
 
 require "src/bsp"
 require "src/Container"
+require "src/Room"
 
+
+local ITER = 1
 
 -- Load
 function love.load()
-	rooms = Container.new( 0, 0, 800, 600 )
-	iter = 7
-	tree = bsp( rooms, iter )
-	tree:ToString( 1 )
+	container = Container.new( 0, 0, 800, 600 )
+	treeContainer = bsp( container, ITER )
+	treeRoom = getRooms( treeContainer )
 end
 
 -- Update
@@ -20,13 +22,13 @@ end
 -- Keypressed
 function love.keypressed( key )
    if key == " " then
-      tree = bsp( rooms, iter )
-      tree:ToString( 1 )
+      treeContainer = bsp( container, ITER )
+      treeRoom = getRooms( treeContainer )
    end
 end
 
 -- Draw
 function love.draw()
-	tree:Draw()
+	treeContainer:draw()
+	treeRoom:draw()
 end
-
