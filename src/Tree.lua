@@ -1,16 +1,16 @@
--- Leaf ( Binary tree node )
+-- Tree
 
-Leaf = {}
+Tree = {}
 
-function Leaf.new( data )
-	local self = setmetatable( {}, { __index = Leaf } )
+function Tree.new( data )
+	local self = setmetatable( {}, { __index = Tree } )
 	self.data = data
 	self.left = nil
 	self.right = nil
 	return self
 end
 
-function Leaf:draw()
+function Tree:draw()
 	self.data:draw()
 	if self.left ~= nil then
 		self.left:draw()
@@ -20,7 +20,7 @@ function Leaf:draw()
 	end
 end
 
-function Leaf:toString( level )
+function Tree:toString( level )
 	for i = 0, level do
 		io.write( "	" )
 	end

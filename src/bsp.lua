@@ -1,6 +1,6 @@
 -- BSP
 
-require "src/Leaf"
+require "src/Tree"
 require "src/Container"
 
 
@@ -30,7 +30,7 @@ local function splitContainer( container )
 end
 
 function bsp( container, iter )
-	local root = Leaf.new( container )
+	local root = Tree.new( container )
 	if iter > 0 then
 		local one, two = splitContainer( container )
 		root.left = bsp( one, iter - 1 )
