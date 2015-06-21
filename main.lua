@@ -5,13 +5,13 @@ require "src/Container"
 require "src/Room"
 
 
-local ITER = 1
+local ITER = 5 -- May not work above 12
 
 -- Load
 function love.load()
 	container = Container.new( 0, 0, 800, 600 )
-	treeContainer = bsp( container, ITER )
-	treeRoom = getRooms( treeContainer )
+	containerTree = bsp( container, ITER )
+	roomList = getRoomList( containerTree )
 end
 
 -- Update
@@ -22,13 +22,13 @@ end
 -- Keypressed
 function love.keypressed( key )
    if key == " " then
-      treeContainer = bsp( container, ITER )
-      treeRoom = getRooms( treeContainer )
+      containerTree = bsp( container, ITER )
+      roomList = getRoomList( containerTree )
    end
 end
 
 -- Draw
 function love.draw()
-	treeContainer:draw()
-	treeRoom:draw()
+	containerTree:draw()
+	roomList:draw()
 end

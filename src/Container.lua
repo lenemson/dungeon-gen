@@ -1,4 +1,4 @@
--- Container
+-- Container ( For BSP )
 
 require "src/Point"
 
@@ -15,12 +15,12 @@ function Container.new( x, y, w, h )
 	return self
 end
 
-function Container:Draw()
+function Container:draw()
 	love.graphics.setColor( 0, 255, 0, 255 )
  	love.graphics.rectangle( "line", self.x, self.y, self.w, self.h )
 end
 
-function Container:ToString()
+function Container:toString()
 	str = string.format( "[%i, %i, %i, %i]", self.x, self.y, self.w, self.h )
 	return str
 end

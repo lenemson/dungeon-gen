@@ -1,4 +1,7 @@
--- Room
+-- Room ( Dungeon room of course :v )
+
+require "src/List"
+
 
 Room = {}
 
@@ -18,14 +21,21 @@ function Room:draw()
  	love.graphics.rectangle( "line", self.x, self.y, self.w, self.h )
 end
 
-function getRooms( treeContainer )
-	if treeContainer == nil or treeContainer.data == nil then
-		print( "nil" )
+-- Tree to List
+function getRoomList( container )
+	if container == nil then
 		return nil
+	elseif container.left == nil and container.right == nil then
+		return List.new( Room.new( container.data ) )
+	else
+		print( "We need to go deeper" )
+		local elem, run
+		elem = getRoomList( container.left )
+		run = elem
+		while run.next ~= nil do
+			run = run.next
+		end
+		run.next = getRoomList( container.right )
+		return elem
 	end
-	print( "non nil" )
-	local root = Leaf.new( Room.new( treeContainer.data ) )
-	root.left = getRooms( treeContainer.left )
-	root.right = getRooms( treeContainer.right )
-	return root
 end
